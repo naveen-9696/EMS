@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/attendance_exceptions/117/withdraw_leave
+method: DELETE
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 6000

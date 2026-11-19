@@ -1,0 +1,86 @@
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+
+# Overwrite or add rules to create your own house style
+#
+# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+# Layout/SpaceInsideArrayLiteralBrackets:
+#   Enabled: true
+# Use a modern Ruby target version (adjust this to match your actual Ruby version)
+# AllCops:
+#   TargetRubyVersion: 3.4.9
+#   NewCops: enable
+#   Exclude:
+#     - 'bin/**/*'
+#     - 'db/schema.rb'
+#     - 'vendor/**/*'
+#     - 'node_modules/**/*'
+
+# ==============================================================================
+# Indentation & Layout Rules (Strictly enforces 2-space rules)
+# ==============================================================================
+
+Layout/IndentationWidth:
+  Width: 2
+
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
+# Enforces that 'rescue' and 'ensure' match the 'begin' indentation
+Layout/RescueEnsureAlignment:
+  Enabled: true
+
+# Fixes indentation inside arrays, hashes, and method parameters
+Layout/ArrayAlignment:
+  Enabled: true
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: normal
+
+# Enforces consistent indentation inside block parameters (do...end)
+Layout/BlockAlignment:
+  Enabled: true
+
+# Enforces space before/after assignments and operators
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  EnforcedStyle: space
+
+# Removes accidental trailing whitespaces
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# Removes accidental consecutive blank lines
+Layout/EmptyLines:
+  Enabled: true
+
+# ==============================================================================
+# Modern Ruby Syntax Fixes
+# ==============================================================================
+
+# Automatically fixes old hash rockets { :a => 1 } to modern symbols { a: 1 }
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+# Enforces standard frozen string literal comment at the top of files
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+# Prevents redundant returns at the end of methods
+Style/RedundantReturn:
+  Enabled: true
+
+# Replaces complex if/unless structures with clean guard clauses where applicable
+Style/GuardClause:
+  Enabled: true
+
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation

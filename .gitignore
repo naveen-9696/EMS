@@ -1,0 +1,5 @@
+
+# Sensitive files
+ems_backend/config/master.key*
+ems_backend/config/credentials.yml.enc.backup
+ems_backend/.kamal/secrets

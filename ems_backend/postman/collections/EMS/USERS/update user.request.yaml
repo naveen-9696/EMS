@@ -1,0 +1,17 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/employee/users
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "phase" : "Confirmed"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 3000

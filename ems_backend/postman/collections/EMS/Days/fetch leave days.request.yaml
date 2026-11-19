@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/employee/attendance_exception_days
+method: GET
+headers:
+  Accept: application/json
+  Content-Type: application/json
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 1000

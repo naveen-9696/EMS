@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/employees/10/attendance_records/237
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: '{ "is_present": false }'
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 3000

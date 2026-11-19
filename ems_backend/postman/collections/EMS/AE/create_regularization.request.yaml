@@ -1,0 +1,19 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/attendance_exceptions/create_regularization
+method: POST
+headers:
+  X-CSRF_Token: "{{csrf_token}}"
+body:
+  type: json
+  content: |
+    {
+      "start_date": "2026-11-10",
+      "reason": "Forgot to mark attendance",
+      "checkin_time": "09:30:00",
+      "checkout_time": "18:00:00"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 3000

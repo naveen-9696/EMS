@@ -1,0 +1,6 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/attendance_exceptions/115/withdraw_regularization
+method: DELETE
+headers:
+  X-CSRF-Token: "{{csrf_token}}"
+order: 7000

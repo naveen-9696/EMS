@@ -1,0 +1,28 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/employee/attendance_exceptions/13/update_leave_days
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "days": [
+        {
+          "leave_date": "2026-11-21",
+          "status": "approved",
+          "admin_reason": "Approved"
+        },
+        {
+          "leave_date": "2026-11-23",
+          "status": "rejected",
+          "admin_reason": "hdvcbjahcuuudhcadchachsacasvc"
+        }
+      ]
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 4000

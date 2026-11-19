@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/admin/employees
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "employee": {
+        "user_id": "9bc23684-5b3b-4d10-a0d3-9772d7be1980",
+        "department_id": "eed0c9ac-9c6a-4589-906b-316534f5efc7",
+        "designation": "DevOps Engineer",
+        "base_salary": 50000.00,
+        "role_id": "1cf01fa6-b665-485c-b4a0-adc2196f6f9a"
+      }
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 3000

@@ -1,0 +1,19 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/attendance_exceptions/create_leave
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "start_date": "2026-11-17",
+      "end_date": "2026-11-18",
+      "reason": "Personal work"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{jwt_token}}"
+order: 2000

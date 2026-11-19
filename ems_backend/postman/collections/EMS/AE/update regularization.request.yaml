@@ -1,0 +1,12 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/attendance_exceptions/114/update_regularization
+method: PUT
+headers:
+  X-CSRF-Token: "{{csrf_token}}"
+body:
+  type: json
+  content: |-
+    {
+        "status": "approved"
+    }
+order: 5000

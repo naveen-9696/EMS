@@ -1,0 +1,19 @@
+# Allow the Vite development server to call the Rails API from the browser.
+require "rack/cors"
+
+frontend_origins = ENV.fetch(
+  "CORS_ORIGINS",
+  "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://127.0.0.1:4173"
+).split(",").map(&:strip)
+
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins(*frontend_origins)
+
+    resource "*",
+      headers: %w[Authorization Content-Type Accept],
+      methods: %i[get post put patch delete options head],
+      expose: %w[Authorization],
+      credentials: true
+  end
+end

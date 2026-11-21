@@ -35,6 +35,7 @@ module AttendanceExceptions
               :checkout_time
             ]
           ),
+          leave_dates: attendance_exception.attendance_exception_days.where(status: "pending").order(:leave_date).pluck(:leave_date).map(&:iso8601),
 
           employee_detail: attendance_exception.employee_detail&.as_json(
             only: [

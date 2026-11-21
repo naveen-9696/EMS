@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         namespace :admin do
           resources :salary_records, only: [ :create, :index, :show ]
           resources :employees, only: [ :index, :show, :create, :update, :destroy ]
+          resources :departments, only: [ :index ]
         end
       end
     end

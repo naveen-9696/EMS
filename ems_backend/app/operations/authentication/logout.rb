@@ -1,6 +1,8 @@
+
 module Authentication
   class Logout < Trailblazer::Operation
     step :set_logout_time
+    step :validate_user
     step :mark_logout
 
     fail :collect_errors
@@ -17,6 +19,15 @@ module Authentication
       true
     end
 
+    def validate_user(ctx, current_user:, **)
+      if current_user.nil?
+        ctx[:errors] = ["User is not authenticated"]
+        return false
+      end
+
+      true
+    end
+
     def mark_logout(ctx, current_user:, logout_time:, **)
       employee_detail = current_user.employee_detail
 
@@ -29,12 +40,12 @@ module Authentication
         .first
 
       unless attendance
-        ctx[:errors] = [ "No login attendance found for today" ]
+        ctx[:errors] = ["No login attendance found for today"]
         return false
       end
 
       if attendance.checkout_time.present?
-        ctx[:errors] = [ "You are already logged out" ]
+        ctx[:errors] = ["You are already logged out"]
         return false
       end
 
@@ -48,7 +59,7 @@ module Authentication
 
     def collect_errors(ctx, **)
       ctx[:error] = {
-        msg: ctx[:errors] || [ "Logout failed" ],
+        msg: ctx[:errors] || ["Logout failed"],
         code: 422
       }
     end

@@ -39,13 +39,17 @@ module Api
 
         render json: {
           message: "Login successful",
-          user: resource.as_json(only: [ :id, :name, :email, :phase ]),
+          user: resource.as_json(only: [ :id, :name, :email, :phase, :status ]).merge(
+            role_name: resource.role&.name
+          ),
           login_at: result[:login_time]
         }, status: :ok
       end
 
       # DELETE /api/v1/logout
       def destroy
+          puts "Current User: #{current_user.inspect}"
+          puts "User Signed In: #{user_signed_in?}"
         result = run Authentication::Logout, current_user: current_user
 
         unless result.success?

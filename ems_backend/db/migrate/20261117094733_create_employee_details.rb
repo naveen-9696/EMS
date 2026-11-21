@@ -14,10 +14,12 @@ class CreateEmployeeDetails < ActiveRecord::Migration[8.1]
 
       t.string :designation
 
-      t.decimal :base_salary,
+      t.float :base_salary,
                 default: 0.0,
                 null: false
-
+                
+      t.date :start_date
+      t.date :end_date
       t.timestamps
 
       t.check_constraint "base_salary >= 0",

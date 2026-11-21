@@ -27,6 +27,7 @@ module Attendances
           attendance_record: attendance_record.as_json(
             only: [
               :id,
+              :employee_detail_id,
               :checkin_time,
               :checkout_time
             ]

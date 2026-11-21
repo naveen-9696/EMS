@@ -3,9 +3,9 @@ class EmployeeDetail < ApplicationRecord
   belongs_to :user
   belongs_to :department
 
-  has_many :attendance_records, dependent: :restrict_with_error
-  has_many :attendance_exceptions, dependent: :restrict_with_error
-  has_many :salary_records, dependent: :restrict_with_error
+  has_many :attendance_records, dependent: :destroy
+  has_many :attendance_exceptions, dependent: :destroy
+  has_many :salary_records, dependent: :destroy
 
   validates :user_id, uniqueness: true
 

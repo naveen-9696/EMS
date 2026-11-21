@@ -2,6 +2,7 @@ module Attendances
   class Update < Trailblazer::Operation
     step :find_employee_detail
     step :find_attendance
+    step :authorize_update
     step :update_attendance
     step :success_response
     fail :collect_errors
@@ -40,6 +41,10 @@ module Attendances
         ctx[:errors] = ctx[:attendance].errors.full_messages
         false
       end
+    end
+
+    def authorize_update(ctx, current_user:, **)
+      Pundit.authorize(current_user, ctx[:attendance], :update?)
     end
 
     def success_response(ctx, **)

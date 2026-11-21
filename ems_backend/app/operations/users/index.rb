@@ -29,7 +29,9 @@ module Users
     def success_response(ctx, **)
       ctx[:response] = {
         message: "Users fetched successfully",
-        data: ctx[:users]
+        data: ctx[:users].map do |user|
+          user.as_json(only: [ :id, :name, :email, :phase, :status ]).merge(role_name: user.role&.name)
+        end
       }
 
       ctx[:status] = :ok

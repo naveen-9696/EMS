@@ -63,12 +63,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_17_103302) do
     t.uuid "user_id", null: false
     t.uuid "department_id", null: false
     t.string "designation"
-    t.decimal "base_salary", default: "0.0", null: false
+    t.float "base_salary", default: 0.0, null: false
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_employee_details_on_department_id"
     t.index ["user_id"], name: "index_employee_details_on_user_id", unique: true
-    t.check_constraint "base_salary >= 0::numeric", name: "employee_details_salary_nonnegative"
+    t.check_constraint "base_salary >= 0::double precision", name: "employee_details_salary_nonnegative"
   end
 
   create_table "roles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

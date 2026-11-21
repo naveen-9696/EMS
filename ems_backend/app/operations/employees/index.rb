@@ -33,7 +33,7 @@ module Employees
               :base_salary
             ]
           ),
-          user: employee_detail.user&.as_json(
+          user: (employee_detail.user&.as_json(
             only: [
               :id,
               :name,
@@ -41,7 +41,7 @@ module Employees
               :status,
               :phase
             ]
-          )
+          ) || {}).merge(role_name: employee_detail.user&.role&.name)
         }
       end
 
